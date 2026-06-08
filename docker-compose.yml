@@ -10,11 +10,13 @@ services:
       MYSQL_ROOT_PASSWORD: 123
     volumes:
       - mariadb-data:/var/lib/mysql
+    ports:
+      - 3306:8072
 
   phpmyadmin:
     image: phpmyadmin:latest
     ports:
-      - 8080:80
+      - 8080:8071
     environment:
       PMA_HOST: mariadb
       MYSQL_ROOT_PASSWORD: 123
