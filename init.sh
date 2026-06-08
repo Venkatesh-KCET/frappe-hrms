@@ -15,7 +15,7 @@ bench init --skip-redis-config-generation frappe-bench
 cd frappe-bench
 
 # Use containers instead of localhost
-bench set-mariadb-host development_mysql
+bench set-mariadb-host development_mysql1
 bench set-redis-cache-host redis://redis:6379
 bench set-redis-queue-host redis://redis:6379
 bench set-redis-socketio-host redis://redis:6379
@@ -27,10 +27,12 @@ sed -i '/watch/d' ./Procfile
 bench get-app erpnext
 bench get-app hrms
 
+#mariadb://root:371ecad35f1d4bcd6d25@development_mysql1:3306/database
 bench new-site hrms.localhost \
 --force \
---mariadb-root-password f136038dd02482d10969 \
---admin-password f136038dd02482d10969 \
+--db_host development_mysql1 \
+--mariadb-root-password 371ecad35f1d4bcd6d25 \
+--admin-password 371ecad35f1d4bcd6d25 \
 --no-mariadb-socket
 
 bench --site hrms.localhost install-app hrms
